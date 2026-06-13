@@ -11,7 +11,7 @@ public class BankAccount {
 
     public void deposit(double amount) {
         if (amount <= 0) {
-            System.out.println("Invalid amount");
+            System.out.println("Deposit amount must be greater than zero.");
             return;
         }
 
@@ -20,7 +20,7 @@ public class BankAccount {
 
     public void withdraw(double amount) {
         if (amount > balance) {
-            System.out.println("Deposit must be greater than balance");
+            System.out.println("Deposit successful.");
             return;
         }
 
