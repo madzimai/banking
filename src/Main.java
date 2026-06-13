@@ -12,7 +12,7 @@ public class Main {
             System.out.println("i = " + i);
 
             BankAccount account =
-                    new BankAccount("Netsai", 100,"Account number");
+                    new BankAccount("Netsai", 100,"123 4666 799");
 
             account.deposit(50);
             account.withdraw(30);

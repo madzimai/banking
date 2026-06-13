@@ -20,7 +20,7 @@ public class BankAccount {
 
     public void withdraw(double amount) {
         if (amount > balance) {
-            System.out.println("Insufficient funds");
+            System.out.println("Deposit must be greater than balance");
             return;
         }
 
