@@ -19,12 +19,21 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
+
+        if (amount <= 0) {
+            System.out.println("Withdrawal amount must be greater than zero.");
+            return;
+        }
+
         if (amount > balance) {
-            System.out.println("Deposit successful.");
+            System.out.println("Insufficient funds.");
             return;
         }
 
         balance -= amount;
+
+        System.out.println("Withdrawal successful.");
+
     }
 
     public String getAccountNumber() {
