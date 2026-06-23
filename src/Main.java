@@ -1,23 +1,21 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            List<BankAccount> accounts = new ArrayList<>();
 
-            BankAccount account =
-                    new BankAccount("Netsai", 100,"123 4666 799");
+            accounts.add(
+                    new BankAccount("Netsai", 500, "ACC001"));
 
-            account.deposit(50);
-            account.withdraw(30);
+            accounts.add(
+                    new BankAccount("Tariro", 100, "ACC0341"));
 
-            account.printDetails();
+            accounts.add(
+                    new BankAccount("John", 150, "ACC001JJ"));
+
+            System.out.println("Total Accounts: "
+                    + accounts.size());
         }
     }
-}
