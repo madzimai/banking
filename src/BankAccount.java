@@ -42,6 +42,9 @@ public class BankAccount {
         }
         return accountNumber;
     }
+    public double getBalance() {
+        return balance;
+    }
 
     public void printDetails() {
         System.out.println("Owner: " + owner);

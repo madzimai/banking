@@ -28,6 +28,7 @@ public class Main {
         System.out.println("Total Accounts: "
                 + accounts.size());
 
+
         BankAccount found =
                 findAccount(accounts, "ACC0341");
 
@@ -36,6 +37,8 @@ public class Main {
         } else {
             System.out.println("Account not found");
         }
+        //if (accounts == null) return;
+        transferMoney(accounts, "ACC001", "ACC002", 200);
     }
 
     public static BankAccount findAccount(
@@ -52,5 +55,34 @@ public class Main {
         }
 
         return null;
+    }
+    public static void transferMoney(
+            List<BankAccount> accounts,
+            String fromAccount,
+            String toAccount,
+            double amount) {
+
+        BankAccount from = findAccount(accounts, fromAccount);
+        BankAccount to = findAccount(accounts, toAccount);
+
+        if (from == null || to == null) {
+            System.out.println("Account not found===");
+            return;
+        }
+
+        if (amount <= 0) {
+            System.out.println("Invalid transfer amount");
+            return;
+        }
+
+        if (from.getBalance() < amount) {
+            System.out.println("Insufficient funds");
+            return;
+        }
+
+        from.withdraw(amount);
+        to.deposit(amount);
+
+        System.out.println("Transfer successful");
     }
 }
