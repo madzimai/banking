@@ -16,7 +16,7 @@ public class Main {
         accounts.add(
                 new BankAccount(
                         "Tariro",
-                        100,
+                        600,
                         "ACC0341"));
 
         accounts.add(
@@ -38,7 +38,7 @@ public class Main {
             System.out.println("Account not found");
         }
         //if (accounts == null) return;
-        transferMoney(accounts, "ACC001", "ACC002", 200);
+        transferMoney(accounts, "ACC0341", "ACC001JJ", 200);
     }
 
     public static BankAccount findAccount(
