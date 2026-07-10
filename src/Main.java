@@ -39,7 +39,22 @@ public class Main {
         }
         //if (accounts == null) return;
         transferMoney(accounts, "ACC0341", "ACC001JJ", 200);
+
+
+        BankAccount account =
+                new BankAccount("Netsai", 1000, "ACC001");
+
+        account.deposit(500);
+
+        account.withdraw(200);
+
+        account.deposit(300);
+
+        account.printDetails();
+
+        account.printTransactionHistory();
     }
+
 
     public static BankAccount findAccount(
             List<BankAccount> accounts,
