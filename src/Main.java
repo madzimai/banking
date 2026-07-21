@@ -1,103 +1,75 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
 
-        List<BankAccount> accounts = new ArrayList<>();
+        // Create the bank
+        Bank bank = new Bank();
 
-        accounts.add(
+        // Add accounts
+        bank.addAccount(
                 new BankAccount(
                         "Netsai",
                         500,
                         "ACC001"));
 
-        accounts.add(
+        bank.addAccount(
                 new BankAccount(
                         "Tariro",
                         600,
                         "ACC0341"));
 
-        accounts.add(
+        bank.addAccount(
                 new BankAccount(
                         "John",
                         150,
                         "ACC001JJ"));
 
+        // Display total accounts
         System.out.println("Total Accounts: "
-                + accounts.size());
+                + bank.getTotalAccounts());
 
+        System.out.println();
+
+        // Display all accounts
+        bank.listAccounts();
+
+        // Search for an account
+        System.out.println("===== SEARCH ACCOUNT =====");
 
         BankAccount found =
-                findAccount(accounts, "ACC0341");
+                bank.findAccount("ACC0341");
 
         if (found != null) {
             found.printDetails();
         } else {
-            System.out.println("Account not found");
+            System.out.println("Account not found.");
         }
-        //if (accounts == null) return;
-        transferMoney(accounts, "ACC0341", "ACC001JJ", 200);
 
+        System.out.println();
+
+        // Transfer money
+        System.out.println("===== TRANSFER MONEY =====");
+
+        bank.transferMoney(
+                "ACC0341",
+                "ACC001JJ",
+                200);
+
+        System.out.println();
+
+        // Show updated account details
+        System.out.println("===== UPDATED ACCOUNTS =====");
+
+        bank.listAccounts();
+
+        // Print transaction history
+        System.out.println("===== TRANSACTION HISTORY =====");
 
         BankAccount account =
-                new BankAccount("Netsai", 1000, "ACC001");
+                bank.findAccount("ACC0341");
 
-        account.deposit(500);
-
-        account.withdraw(200);
-
-        account.deposit(300);
-
-        account.printDetails();
-
-        account.printTransactionHistory();
-    }
-
-
-    public static BankAccount findAccount(
-            List<BankAccount> accounts,
-            String accountNumber) {
-
-        for (BankAccount account : accounts) {
-
-            if (account.getAccountNumber()
-                    .equals(accountNumber)) {
-
-                return account;
-            }
+        if (account != null) {
+            account.printTransactionHistory();
         }
-
-        return null;
-    }
-    public static void transferMoney(
-            List<BankAccount> accounts,
-            String fromAccount,
-            String toAccount,
-            double amount) {
-
-        BankAccount from = findAccount(accounts, fromAccount);
-        BankAccount to = findAccount(accounts, toAccount);
-
-        if (from == null || to == null) {
-            System.out.println("Account not found===");
-            return;
-        }
-
-        if (amount <= 0) {
-            System.out.println("Invalid transfer amount");
-            return;
-        }
-
-        if (from.getBalance() < amount) {
-            System.out.println("Insufficient funds");
-            return;
-        }
-
-        from.withdraw(amount);
-        to.deposit(amount);
-
-        System.out.println("Transfer successful");
     }
 }
