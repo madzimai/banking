@@ -75,7 +75,9 @@ public abstract class BankAccount {
         System.out.println("===== Transaction History =====");
 
         for (Transaction transaction : transactions) {
-            System.out.println(transaction);
+
+            transaction.printStatement();
+
         }
     }
 
