@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAccount {
+public abstract class BankAccount {
 
     private String owner;
     private double balance;
@@ -81,9 +81,11 @@ public class BankAccount {
 
     public void printDetails() {
 
-        System.out.println("Owner: " + owner);
-        System.out.println("Balance: $" + balance);
-        System.out.println("Account Number: " + accountNumber);
+        System.out.println("----------------------------");
+        System.out.println("Account Type : " + getAccountType());
+        System.out.println("Owner        : " + owner);
+        System.out.println("Account No   : " + accountNumber);
+        System.out.println("Balance      : $" + balance);
     }
 
     public String getAccountNumber() {
@@ -93,4 +95,6 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    public abstract String getAccountType();
 }

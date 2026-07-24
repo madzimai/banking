@@ -5,71 +5,113 @@ public class Main {
         // Create the bank
         Bank bank = new Bank();
 
-        // Add accounts
-        bank.addAccount(
-                new BankAccount(
+        // Create different account types
+        SavingsAccount netsai =
+                new SavingsAccount(
                         "Netsai",
-                        500,
-                        "ACC001"));
+                        1000,
+                        "SAV001",
+                        0.05);
 
-        bank.addAccount(
-                new BankAccount(
+        CurrentAccount tariro =
+                new CurrentAccount(
                         "Tariro",
-                        600,
-                        "ACC0341"));
+                        500,
+                        "CUR001",
+                        300);
 
-        bank.addAccount(
-                new BankAccount(
+        SavingsAccount john =
+                new SavingsAccount(
                         "John",
-                        150,
-                        "ACC001JJ"));
+                        800,
+                        "SAV002",
+                        0.03);
+
+        // Add accounts to the bank
+        bank.addAccount(netsai);
+        bank.addAccount(tariro);
+        bank.addAccount(john);
 
         // Display total accounts
+        System.out.println("==================================");
+        System.out.println("WELCOME TO JAVA BANKING SYSTEM");
+        System.out.println("==================================");
+
+        System.out.println();
         System.out.println("Total Accounts: "
                 + bank.getTotalAccounts());
 
-        System.out.println();
-
         // Display all accounts
+        System.out.println();
+        System.out.println("===== ALL ACCOUNTS =====");
+
         bank.listAccounts();
 
-        // Search for an account
+        // Search account
+        System.out.println();
         System.out.println("===== SEARCH ACCOUNT =====");
 
-        BankAccount found =
-                bank.findAccount("ACC0341");
+        BankAccount account =
+                bank.findAccount("CUR001");
 
-        if (found != null) {
-            found.printDetails();
-        } else {
-            System.out.println("Account not found.");
+        if (account != null) {
+            account.printDetails();
         }
 
+        // Deposit
         System.out.println();
+        System.out.println("===== DEPOSIT =====");
+
+        netsai.deposit(500);
+
+        // Withdraw
+        System.out.println();
+        System.out.println("===== WITHDRAW =====");
+
+        tariro.withdraw(700);
+
+        // Add interest
+        System.out.println();
+        System.out.println("===== ADD INTEREST =====");
+
+        netsai.addInterest();
 
         // Transfer money
+        System.out.println();
         System.out.println("===== TRANSFER MONEY =====");
 
         bank.transferMoney(
-                "ACC0341",
-                "ACC001JJ",
+                "SAV001",
+                "CUR001",
                 200);
 
+        // Display updated accounts
         System.out.println();
-
-        // Show updated account details
         System.out.println("===== UPDATED ACCOUNTS =====");
 
         bank.listAccounts();
 
-        // Print transaction history
+        // Transaction history
+        System.out.println();
         System.out.println("===== TRANSACTION HISTORY =====");
 
-        BankAccount account =
-                bank.findAccount("ACC0341");
+        netsai.printTransactionHistory();
 
-        if (account != null) {
-            account.printTransactionHistory();
-        }
+        System.out.println();
+
+        tariro.printTransactionHistory();
+
+        System.out.println();
+
+        john.printTransactionHistory();
+
+        System.out.println();
+        System.out.println("===== END OF DEMO =====");
+        //Apply Interest
+        System.out.println();
+        System.out.println("===== APPLY INTEREST =====");
+
+        bank.applyInterest();
+        bank.listAccounts();
     }
 }

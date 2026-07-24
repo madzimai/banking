@@ -20,4 +20,8 @@ public class CurrentAccount extends BankAccount {
 
     private void setBalance(double v) {
     }
+    @Override
+    public String getAccountType() {
+        return "Current Account";
+    }
 }
