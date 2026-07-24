@@ -81,4 +81,18 @@ public class Bank {
 
         System.out.println("Transfer completed successfully.");
     }
+
+    public void applyInterest() {
+
+        System.out.println("Applying interest...");
+
+        for (BankAccount account : accounts) {
+
+            if (account instanceof InterestBearing interestAccount) {
+
+                interestAccount.addInterest();
+
+            }
+        }
+    }
 }

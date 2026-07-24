@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class Transaction implements Printable {
 
     private LocalDateTime dateTime;
     private String type;
@@ -39,5 +39,15 @@ public class Transaction {
                 + type
                 + " | Amount: $" + amount
                 + " | " + description;
+    }
+
+    @Override
+    public void printStatement() {
+
+        System.out.println("----------------------------");
+        System.out.println("Transaction Type : " + type);
+        System.out.println("Amount           : $" + amount);
+        System.out.println("Description      : " + description);
+        System.out.println("Date             : " + dateTime);
     }
 }

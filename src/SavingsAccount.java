@@ -1,4 +1,5 @@
-public class SavingsAccount extends BankAccount {
+public class SavingsAccount extends BankAccount
+        implements InterestBearing {
 
     private double interestRate;
 
@@ -22,5 +23,9 @@ public class SavingsAccount extends BankAccount {
 
         System.out.println(
                 "Interest added: $" + interest);
+    }
+    @Override
+    public String getAccountType() {
+        return "Savings Account";
     }
 }
