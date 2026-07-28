@@ -79,11 +79,19 @@ public class Main {
         // Transfer money
         System.out.println();
         System.out.println("===== TRANSFER MONEY =====");
+        try {
 
-        bank.transferMoney(
-                "SAV001",
-                "CUR001",
-                200);
+            bank.transferMoney(
+                    "SAV001",
+                    "CUR001",
+                    -50);
+
+        } catch (RuntimeException ex) {
+
+            System.out.println(
+                    "Error: " + ex.getMessage());
+
+        }
 
         // Display updated accounts
         System.out.println();

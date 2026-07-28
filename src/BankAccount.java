@@ -27,8 +27,8 @@ public abstract class BankAccount {
     public void deposit(double amount) {
 
         if (amount <= 0) {
-            System.out.println("Deposit amount must be greater than zero.");
-            return;
+            throw new InvalidAmountException(
+                    "Withdrawal amount must be greater than zero.");
         }
 
         balance += amount;
@@ -45,13 +45,15 @@ public abstract class BankAccount {
     public void withdraw(double amount) {
 
         if (amount <= 0) {
-            System.out.println("Withdrawal amount must be greater than zero.");
-            return;
+            throw new InvalidAmountException(
+                    "Amount must be greater than zero.");
         }
 
-        if (amount > balance) {
-            System.out.println("Insufficient funds.");
-            return;
+        if (amount > getBalance()) {
+
+            throw new InsufficientFundsException(
+                    "Insufficient balance.");
+
         }
 
         balance -= amount;
