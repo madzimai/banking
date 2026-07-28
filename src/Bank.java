@@ -13,6 +13,14 @@ public class Bank {
         accounts.add(account);
     }
 
+    public int getTotalAccounts() {
+        return accounts.size();
+    }
+
+    public List<BankAccount> getAccounts() {
+        return accounts;
+    }
+
     public void listAccounts() {
 
         System.out.println("===== BANK ACCOUNTS =====");
@@ -35,33 +43,29 @@ public class Bank {
         return null;
     }
 
-    public int getTotalAccounts() {
-        return accounts.size();
-    }
+    public void transferMoney(
+            String fromAccount,
+            String toAccount,
+            double amount) {
 
-    public List<BankAccount> getAccounts() {
-        return accounts;
-    }
-    public void transferMoney(String fromAccount,
-                              String toAccount,
-                              double amount) {
+        System.out.println("Transfer started...");
 
         BankAccount sender = findAccount(fromAccount);
         BankAccount receiver = findAccount(toAccount);
 
         if (sender == null || receiver == null) {
-            System.out.println("Account not found.");
-            return;
+            throw new AccountNotFoundException(
+                    "One or more accounts were not found.");
         }
 
         if (amount <= 0) {
-            System.out.println("Invalid transfer amount.");
-            return;
+            throw new InvalidAmountException(
+                    "Transfer amount must be greater than zero.");
         }
 
         if (sender.getBalance() < amount) {
-            System.out.println("Insufficient funds.");
-            return;
+            throw new InsufficientFundsException(
+                    "Insufficient balance.");
         }
 
         sender.withdraw(amount);

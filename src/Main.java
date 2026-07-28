@@ -76,14 +76,29 @@ public class Main {
 
         netsai.addInterest();
 
-        // Transfer money
         System.out.println();
         System.out.println("===== TRANSFER MONEY =====");
 
-        bank.transferMoney(
-                "SAV001",
-                "CUR001",
-                200);
+        try {
+
+            bank.transferMoney(
+                    "SAV001",
+                    "CUR001",
+                    20000000);
+
+        } catch (AccountNotFoundException ex) {
+
+            System.out.println(ex.getMessage());
+
+        } catch (InvalidAmountException ex) {
+
+            System.out.println(ex.getMessage());
+
+        } catch (InsufficientFundsException ex) {
+
+            System.out.println(ex.getMessage());
+
+        }
 
         // Display updated accounts
         System.out.println();
