@@ -19,7 +19,7 @@ public abstract class BankAccount {
 
         transactions.add(
                 new Transaction(
-                        "ACCOUNT CREATED",
+                        TransactionType.ACCOUNT_CREATED,
                         balance,
                         "Opening balance"));
     }
@@ -35,7 +35,7 @@ public abstract class BankAccount {
 
         transactions.add(
                 new Transaction(
-                        "DEPOSIT",
+                        TransactionType.DEPOSIT,
                         amount,
                         "Cash deposit"));
 
@@ -60,7 +60,7 @@ public abstract class BankAccount {
 
         transactions.add(
                 new Transaction(
-                        "WITHDRAWAL",
+                        TransactionType.WITHDRAWAL,
                         amount,
                         "Cash withdrawal"));
 
