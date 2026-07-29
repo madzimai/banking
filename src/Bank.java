@@ -73,13 +73,13 @@ public class Bank {
 
         sender.addTransaction(
                 new Transaction(
-                        "TRANSFER OUT",
+                        TransactionType.TRANSFER_OUT,
                         amount,
                         "Transferred to " + receiver.getAccountNumber()));
 
         receiver.addTransaction(
                 new Transaction(
-                        "TRANSFER IN",
+                        TransactionType.TRANSFER_IN,
                         amount,
                         "Received from " + sender.getAccountNumber()));
 

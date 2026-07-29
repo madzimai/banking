@@ -30,7 +30,7 @@ public class CurrentAccount extends BankAccount {
 
         addTransaction(
                 new Transaction(
-                        "WITHDRAWAL",
+                        TransactionType.WITHDRAWAL,
                         amount,
                         "Current Account Withdrawal"));
 
